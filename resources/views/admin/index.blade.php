@@ -1,7 +1,19 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+    @php
+        $id = Auth::user()->id;
+        $userid = App\Models\User::find($id);
+        $status = $userid->status;
+    @endphp
+
     <div class="content">
 
+        @if ($status == 'active')
+            <h4>Admin Account Is <span class="text-success">Active </span> </h4>
+        @else
+            <h4>Admin Account Is <span class="text-danger">InActive </span> </h4>
+            <p class="text-danger"><b>Plz wait admin will check and approve your account</b></p>
+        @endif
         <!-- Start Content-->
         <div class="container-fluid">
 
@@ -144,7 +156,8 @@
                                 <h5 class="text-muted mt-0">Total sales made today</h5>
                                 <h2>$178</h2>
 
-                                <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed to
+                                <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed
+                                    to
                                     work best in the meat of your page content.</p>
 
                                 <div class="row mt-3">

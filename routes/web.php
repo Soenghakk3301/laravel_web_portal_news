@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -56,8 +58,81 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Category Routes
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/all/category', 'allCategory')->name('all.category');
+        Route::get('/add/category', 'addCategory')->name('add.category');
+        Route::post('/store/category', 'storeCategory')->name('category.store');
+        Route::get('/edit/category/{id}', 'editCategory')->name('edit.category');
+        Route::post('/update/category', 'updateCategory')->name('category.update');
+        Route::get('/delete/category/{id}', 'deleteCategory')->name('delete.category');
+    });
+
+    // SubCategory Routes
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/all/subcategory', 'allSubCategory')->name('all.subcategory');
+        Route::get('/add/subcategory', 'addSubCategory')->name('add.subcategory');
+        Route::post('/store/subcategory', 'storeSubCategory')->name('subcategory.store');
+        Route::get('/edit/subcategory/{id}', 'editSubCategory')->name('edit.subcategory');
+        Route::post('/update/subcategory', 'updateSubCategory')->name('subcategory.update');
+        Route::get('/delete/subcategory/{id}', 'deleteSubCategory')->name('delete.subcategory');
+    });
+
+
+    // Admin User all Route
+    Route::controller(AdminController::class)->group(function () {
+
+        Route::get('/all/admin', 'allAdmin')->name('all.admin');
+        Route::get('/add/admin', 'addAdmin')->name('add.admin');
+        Route::post('/store/admin', 'storeAdmin')->name('admin.store');
+        Route::get('/edit/admin/{id}', 'editAdmin')->name('edit.admin');
+        Route::post('/update/admin', 'updateAdmin')->name('admin.update');
+        Route::get('/delete/admin/{id}', 'deleteAdmin')->name('delete.admin');
+
+        Route::get('/inactive/admin/user/{id}', 'InactiveAdminUser')->name('inactive.admin.user');
+        Route::get('/active/admin/user/{id}', 'activeAdminUser')->name('active.admin.user');
+
+    });
+
+
+    // News Post all Route
+    Route::controller(NewsPostController::class)->group(function () {
+
+        Route::get('/all/news/post', 'allNewsPost')->name('all.news.post');
+        Route::get('/add/news/post', 'addNewsPost')->name('add.news.post');
+        Route::post('/store/news/post', 'storeNewsPost')->name('store.news.post');
+        Route::get('/edit/news/post/{id}', 'editNewsPost')->name('edit.news.post');
+        Route::post('/update/news/post', 'updateNewsPost')->name('update.news.post');
+        Route::get('/delete/news/post/{id}', 'deleteNewsPost')->name('delete.news.post');
+
+        Route::get('/inactive/news/post/{id}', 'inactiveNewsPost')->name('inactive.news.post');
+        Route::get('/active/news/post/{id}', 'activeNewsPost')->name('active.news.post');
+    });
+
+
+    // Banner all routes
+    Route::controller(BannerController::class)->group(function () {
+        Route::get('/all/banners', 'allBanners')->name('all.banners');
+        Route::post('/update/banners', 'updateBanners')->name('update.banners');
+    });
+
+    // Gallery All Routes
+    Route::controller(PhotoGalleryController::class)->group(function () {
+        Route::get('/all/photo/gallery', 'allPhotoGallery')->name('all.photo.gallery');
+        Route::get('/add/photo/gaery', 'addPhotoGallery')->name('add.photo.gallery');
+        Route::post('/store/photo/gallery', 'storePhotoGallery')->name('store.photo.gallery');
+        Route::get('/edit/photo/gallery/{id}', 'editPhotoGallery')->name('edit.photo.gallery');
+        Route::post('/update/photo/gallery', 'updatePhotoGallery')->name('update.photo.gallery');
+        Route::get('/delete/photo/gallery/{id}', 'deletePhotoGallery')->name('delete.photo.gallery');
     });
 });
+
+
+
+
+/// Access for All
+Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails']) ;
+Route::get('/news/category/{id}/{slug}', [IndexController::class, 'catWiseNews']);
+Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subCatWiseNews']);
+Route::get('/lang/change', [IndexController::class, 'Change'])->name('changeLang');
+Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
 
 
 Route::get('/admin/login', [AdminController::class, 'adminLogin'])

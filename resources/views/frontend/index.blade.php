@@ -16,128 +16,41 @@
                         <div class="col-lg-7 col-md-7">
                             <div class="themesbazar_led_active owl-carousel owl-loaded owl-drag">
 
+                                @php
+                                    
+                                    $news_slider = App\Models\NewsPost::where('status', 1)
+                                        ->where('top_slider', 1)
+                                        ->limit(3)
+                                        ->get();
+                                @endphp
+
                                 <div class="owl-stage-outer">
                                     <div class="owl-stage"
                                         style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;">
-                                        <div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation</a>
-                                                    </h1>
+
+                                        @foreach ($news_slider as $slider)
+                                            <div class="owl-item " style="width: 506.25px; margin-right: 20px;">
+                                                <div class="secOne_newsContent">
+                                                    <div class="sec-one-image">
+                                                        <a
+                                                            href="{{ url('news/details/' . $slider->id . '/' . $slider->news_title_slug) }}"><img
+                                                                class="lazyload" src="{{ asset($slider->image) }}"></a>
+                                                        <h6 class="sec-small-cat">
+                                                            <a href=" ">
+                                                                {{ $slider->created_at->format('M d Y') }}
+                                                            </a>
+                                                        </h6>
+                                                        <h1 class="sec-one-title">
+                                                            <a
+                                                                href="{{ url('news/details/' . $slider->id . '/' . $slider->news_title_slug) }}">
+                                                                {{ GoogleTranslate::trans($slider->news_title, app()->getLocale()) }}
+                                                            </a>
+                                                        </h1>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation</a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation</a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation </a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation </a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation </a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;">
-                                            <div class="secOne_newsContent">
-                                                <div class="sec-one-image">
-                                                    <a href=" "><img class="lazyload"
-                                                            src="assets/images/lazy.jpg"></a>
-                                                    <h6 class="sec-small-cat">
-                                                        <a href=" ">
-                                                            8 September 2022, 09:31 PM
-                                                        </a>
-                                                    </h6>
-                                                    <h1 class="sec-one-title">
-                                                        <a href=" ">India restricts rice exports, could fuel food
-                                                            inflation</a>
-                                                    </h1>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                                 <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
@@ -146,195 +59,69 @@
                                             class="fa-solid fa-angle-right"></i></button>
                                 </div>
                                 <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button
-                                        role="button" class="owl-dot active"><span></span></button><button
-                                        role="button" class="owl-dot"><span></span></button></div>
+                                        role="button" class="owl-dot active"><span></span></button><button role="button"
+                                        class="owl-dot"><span></span></button></div>
                             </div>
 
                         </div>
                         <div class="col-lg-5 col-md-5">
 
-                            <div class="secOne-smallItem">
-                                <div class="secOne-smallImg">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h5 class="secOne_smallTitle">
-                                        <a href=" ">Why people are industry hopping </a>
-                                    </h5>
+                            @php
+                                
+                                $section_three = App\Models\NewsPost::where('status', 1)
+                                    ->where('first_section_three', 1)
+                                    ->limit(3)
+                                    ->get();
+                            @endphp
+
+                            @foreach ($section_three as $three)
+                                <div class="secOne-smallItem">
+                                    <div class="secOne-smallImg">
+                                        <a href="{{ url('news/details/' . $three->id . '/' . $three->news_title_slug) }}"><img
+                                                class="lazyload" src="{{ asset($three->image) }}"></a>
+                                        <h5 class="secOne_smallTitle">
+                                            <a href="{{ url('news/details/' . $three->id . '/' . $three->news_title_slug) }}">
+                                                {{ GoogleTranslate::trans($three->news_title, app()->getLocale()) }} </a>
+                                        </h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="secOne-smallItem">
-                                <div class="secOne-smallImg">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h5 class="secOne_smallTitle">
-                                        <a href=" ">Why people are industry hopping </a>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="secOne-smallItem">
-                                <div class="secOne-smallImg">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h5 class="secOne_smallTitle">
-                                        <a href=" ">Why people are industry hopping</a>
-                                    </h5>
-                                </div>
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
                     <div class="sec-one-item2">
                         <div class="row">
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
+
+                            @php
+                                
+                                $section_nine = App\Models\NewsPost::where('status', 1)
+                                    ->where('first_section_nine', 1)
+                                    ->limit(9)
+                                    ->get();
+                            @endphp
+
+                            @foreach ($section_nine as $nine)
+                                <div class="themesBazar-3 themesBazar-m2">
+                                    <div class="sec-one-wrpp2">
+                                        <div class="secOne-news">
+                                            <div class="secOne-image2">
+                                                <a href=" "><img class="lazyload" src="{{ asset($nine->image) }}"></a>
+                                            </div>
+                                            <h4 class="secOne-title2">
+                                                <a href="{{ url('news/details/' . $nine->id . '/' . $nine->news_title_slug) }}">
+                                                    {{ GoogleTranslate::trans($nine->news_title, app()->getLocale()) }}
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
+                                        <div class="cat-meta">
+                                            <a href=" "> <i class="lar la-newspaper"></i>
+                                                {{ $nine->created_at->format('M d Y') }}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping</a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping</a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping</a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="sec-one-wrpp2">
-                                    <div class="secOne-news">
-                                        <div class="secOne-image2">
-                                            <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                        </div>
-                                        <h4 class="secOne-title2">
-                                            <a href=" ">Why people are industry hopping </a>
-                                        </h4>
-                                    </div>
-                                    <div class="cat-meta">
-                                        <a href=" "> <i class="lar la-newspaper"></i>
-                                            8 September 2022
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -368,11 +155,15 @@
                     <div class="themesBazar_widget">
                         <h3 style="margin-top:5px"> OLD NEWS </h3>
                     </div>
-                    <form class="wordpress-date" action=" " method="post">
-                        <input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"
-                            value="" name="m" required="" class="hasDatepicker">
+
+                    <form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
+                        @csrf
+
+                        <input type="date" id="wordpress" placeholder="Select Date" autocomplete="off" name="date"
+                            class="hasDatepicker">
                         <input type="submit" value="Search">
                     </form>
+
                     <div class="recentPopular">
                         <ul class="nav nav-pills" id="recentPopular-tab" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -389,133 +180,33 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane active show  fade" id="recent" role="tabpanel" aria-labelledby="recent">
                             <div class="news-titletab">
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
 
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">5th Convocation of IIUC on Sunday </a></h4>
-                                </div>
+                                @foreach ($newnewspost as $item)
+                                    <div class="tab-image tab-border">
+                                        <a href="{{ url('news/details/' . $item->id . '/' . $item->news_title_slug) }}"><img
+                                                class="lazyload" src="{{ asset($item->image) }}"></a>
+                                        <a href=" " class="tab-icon"><i class="la la-play"></i></a>
+                                        <h4 class="tab_hadding"><a
+                                                href="{{ url('news/details/' . $item->id . '/' . $item->news_title_slug) }}">{{ GoogleTranslate::trans($item->news_title, app()->getLocale()) }}
+                                            </a></h4>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="tab-pane fade" id="popular" role="tabpanel" aria-labelledby="popular">
                             <div class="news-titletab">
 
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
-
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
-
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
-
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
-
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
-
-                                <div class="tab-image tab-border">
-                                    <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-                                    <a href=" " class="tab-icon"><i class="la la-play"></i></a>
-                                    <h4 class="tab_hadding"><a href=" ">Nasa’s Artemis Moon rocket second launch
-                                        </a></h4>
-                                </div>
+                                @foreach ($newspopular as $item)
+                                    <div class="tab-image tab-border">
+                                        <a href="{{ url('news/details/' . $item->id . '/' . $item->news_title_slug) }}"><img
+                                                class="lazyload" src="{{ asset($item->image) }}"></a>
+                                        <a href=" " class="tab-icon"><i class="la la-play"></i></a>
+                                        <h4 class="tab_hadding"><a
+                                                href="{{ url('news/details/' . $item->id . '/' . $item->news_title_slug) }}">{{ GoogleTranslate::trans($item->news_title, app()->getLocale()) }}
+                                            </a></h4>
+                                    </div>
+                                @endforeach
 
                             </div>
                         </div>
@@ -537,8 +228,7 @@
                             <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
                                 allowfullscreen="true" class=""
                                 style="position: static; visibility: visible; width: 279px; height: 220px; display: block; flex-grow: 1;"
-                                title="Twitter Timeline" src=" "></iframe>
-                        </div>
+                                title="Twitter Timeline" src=" "></iframe></div>
                         <script async="" src="assets/js/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
@@ -546,13 +236,17 @@
         </div>
     </section>
 
+    @php
+        $banner = App\Models\Banner::find(1);
+    @endphp
+
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="themesBazar_widget">
                     <div class="textwidget">
                         <p><img loading="lazy" class="aligncenter size-full wp-image-74"
-                                src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+                                src="{{ asset($banner->home_one) }}" alt="" width="100%" height="auto"></p>
                     </div>
                 </div>
             </div>
@@ -560,7 +254,7 @@
                 <div class="themesBazar_widget">
                     <div class="textwidget">
                         <p><img loading="lazy" class="aligncenter size-full wp-image-74"
-                                src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+                                src="{{ asset($banner->home_two) }}" alt="" width="100%" height="auto"></p>
                     </div>
                 </div>
             </div>
@@ -941,7 +635,8 @@
                 <div class="themesBazar_widget">
                     <div class="textwidget">
                         <p><img loading="lazy" class="aligncenter size-full wp-image-74"
-                                src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+                                src="{{ asset($banner->home_three) }}" alt="" width="100%" height="auto">
+                        </p>
                     </div>
                 </div>
             </div>
@@ -949,7 +644,7 @@
                 <div class="themesBazar_widget">
                     <div class="textwidget">
                         <p><img loading="lazy" class="aligncenter size-full wp-image-74"
-                                src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+                                src="{{ asset($banner->home_four) }}" alt="" width="100%" height="auto"></p>
                     </div>
                 </div>
             </div>
@@ -1332,8 +1027,8 @@
                 </div>
                 <div class="col-lg-4 col-md-4">
 
-                    <h2 class="themesBazar_cat01"> <a href=" "> INTERNATIONAL </a> <span> <a href=" ">More
-                                <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+                    <h2 class="themesBazar_cat01"> <a href=" "> INTERNATIONAL </a> <span> <a href=" ">More <i
+                                    class="las la-arrow-circle-right"></i> </a></span> </h2>
 
                     <div class="white-bg">
                         <div class="secFive-image">
@@ -1787,83 +1482,25 @@
                         <div class="owl-stage-outer">
                             <div class="owl-stage"
                                 style="transform: translate3d(-4764px, 0px, 0px); transition: all 1s ease 0s; width: 5558px;">
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 6 </a>
-                                            </h3>
+
+                                @php
+                                    $photo_gallery1 = App\Models\PhotoGallery::latest()->get();
+                                @endphp
+
+                                @foreach ($photo_gallery1 as $item)
+                                    <div class="owl-item" style="width: 784px; margin-right: 10px;">
+                                        <div class="item">
+                                            <div class="photo">
+                                                <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
+                                                    <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
+                                                <h3 class="photoCaption">
+                                                    <a href=" ">{{ $item->post_date }} </a>
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 6 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 5 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 4 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 3 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 2 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 784px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="photo">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                            <h3 class="photoCaption">
-                                                <a href=" ">PHOTO GALLARY 1 </a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
@@ -1876,158 +1513,22 @@
                         <div class="owl-stage-outer">
                             <div class="owl-stage"
                                 style="transition: all 1s ease 0s; width: 2515px; transform: translate3d(-463px, 0px, 0px);">
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
+
+                                @php
+                                    $photo_gallery = App\Models\PhotoGallery::latest()->get();
+                                @endphp
+
+                                @foreach ($photo_gallery as $item)
+                                    <div class="owl-item " style="width: 122.333px; margin-right: 10px;">
+                                        <div class="item">
+                                            <div class="phtot2">
+                                                <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
+                                                    <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned active" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned active" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active center" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 122.333px; margin-right: 10px;">
-                                    <div class="item">
-                                        <div class="phtot2">
-                                            <a class="themeGallery" href="assets/images/6786.jpg">
-                                                <img src="assets/images/lazy.jpg" alt="PHOTO"></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="owl-nav disabled"><button type="button" role="presentation"

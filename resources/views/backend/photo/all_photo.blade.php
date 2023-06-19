@@ -1,4 +1,4 @@
-@extends('admin.admin_dashboard')
+a@extends('admin.admin_dashboard')
 @section('admin')
     <div class="content">
 
@@ -11,11 +11,11 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.category') }}" class="btn btn-blue waves-effect waves-light">Add
-                                    Category</a>
+                                <a href="{{ route('add.photo.gallery') }}" class="btn btn-blue waves-effect waves-light">Add
+                                    Photo</a>
                             </ol>
                         </div>
-                        <h4 class="page-title">Category All </h4>
+                        <h4 class="page-title">Photo Gallery All </h4>
                     </div>
                 </div>
             </div>
@@ -30,21 +30,24 @@
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
-                                        <th>Category Name </th>
+                                        <th>Image </th>
+                                        <th>Date</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($categories as $key => $item)
+                                    @foreach ($photo as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $item->category_name }}</td>
+                                            <td><img src="{{ asset($item->photo_gallery) }}"
+                                                    style="width:50px; height:50px;"> </td>
+                                            <td>{{ $item->post_date }}</td>
                                             <td>
-                                                <a href="{{ route('edit.category', $item->id) }}"
+                                                <a href="{{ route('edit.photo.gallery', $item->id) }}"
                                                     class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
-                                                <a href="{{ route('delete.category', $item->id) }}"
+                                                <a href="{{ route('delete.photo.gallery', $item->id) }}"
                                                     class="btn btn-danger rounded-pill waves-effect waves-light"
                                                     id="delete">Delete</a>
 
