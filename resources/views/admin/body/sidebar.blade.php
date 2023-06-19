@@ -117,6 +117,58 @@
                          </div>
                      </li>
 
+                     <li>
+                         <a href="#video" data-bs-toggle="collapse">
+                             <i class="mdi mdi-email-multiple-outline"></i>
+                             <span> Video Setting </span>
+                             <span class="menu-arrow"></span>
+                         </a>
+                         <div class="collapse" id="video">
+                             <ul class="nav-second-level">
+                                 <li>
+                                     <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
+                                 </li>
+
+                             </ul>
+                         </div>
+                     </li>
+
+                     <li>
+                         <a href="#video" data-bs-toggle="collapse">
+                             <i class="mdi mdi-email-multiple-outline"></i>
+                             <span> Live Tv Setting </span>
+                             <span class="menu-arrow"></span>
+                         </a>
+                         <div class="collapse" id="video">
+                             <ul class="nav-second-level">
+                                 <li>
+                                     <a href="{{ route('update.live.tv') }}">Update Live TV</a>
+                                 </li>
+
+                             </ul>
+                         </div>
+                     </li>
+
+                     <li>
+                         <a href="#review" data-bs-toggle="collapse">
+                             <i class="mdi mdi-email-multiple-outline"></i>
+                             <span> Review Setting </span>
+                             <span class="menu-arrow"></span>
+                         </a>
+                         <div class="collapse" id="review">
+                             <ul class="nav-second-level">
+                                 <li>
+                                     <a href="{{ route('pending.review') }}">Pending Review</a>
+                                 </li>
+
+                                 <li>
+                                     <a href="{{ route('approve.review') }}">Approve Review</a>
+                                 </li>
+
+                             </ul>
+                         </div>
+                     </li>
+
                      <li class="menu-title mt-2">Setting</li>
 
                      <li>

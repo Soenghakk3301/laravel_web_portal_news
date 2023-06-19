@@ -4,9 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\VideoGallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -122,6 +125,27 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/photo/gallery', 'updatePhotoGallery')->name('update.photo.gallery');
         Route::get('/delete/photo/gallery/{id}', 'deletePhotoGallery')->name('delete.photo.gallery');
     });
+
+    Route::controller(VideoGalleryController::class)->group(function () {
+        Route::get('/all/video/gallery', 'allVideoGallery')->name('all.video.gallery');
+        Route::get('/add/video/gallery', 'addVideoGallery')->name('add.video.gallery');
+        Route::post('/store/video/gallery', 'storeVideoGallery')->name('store.video.gallery');
+        Route::get('/edit/video/gallery/{id}', 'editVideoGallery')->name('edit.video.gallery');
+        Route::post('/update/video/gallery', 'updateVideoGallery')->name('update.video.gallery');
+        Route::get('/delete/video/gallery/{id}', 'deleteVideoGallery')->name('delete.video.gallery');
+
+        Route::get('/update/live/tv', 'updateLiveTv')->name('update.live.tv');
+    });
+
+
+    Route::controller(ReviewController::class)->group(function () {
+
+        Route::get('/pending/review', 'pendingReview')->name('pending.review');
+        Route::get('/review/approve/{id}', 'ReviewApprove')->name('review.approve');
+        Route::get('/approve/review', 'approveReview')->name('approve.review');
+        Route::get('/delete/review/{id}', 'deleteReview')->name('delete.review');
+
+    });
 });
 
 
@@ -133,6 +157,7 @@ Route::get('/news/category/{id}/{slug}', [IndexController::class, 'catWiseNews']
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subCatWiseNews']);
 Route::get('/lang/change', [IndexController::class, 'Change'])->name('changeLang');
 Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
+Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review');
 
 
 Route::get('/admin/login', [AdminController::class, 'adminLogin'])
