@@ -39,7 +39,8 @@
                                         <select name="category_id" class="form-select" id="example-select">
                                             <option>Select Category </option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                <option value="{{ $category->id }}">
+                                                    {{ $category->category_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -47,8 +48,12 @@
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="inputEmail4" class="form-label"> Sub Category </label>
                                         <select name="subcategory_id" class="form-select" id="example-select">
-                                            <option> </option>
-
+                                            <option>Select SubCategory </option>
+                                            @foreach ($subcategories as $subcatgory)
+                                                <option value="{{ $subcatgory->id }}">
+                                                    {{ $subcatgory->subcategory_name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
 

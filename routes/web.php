@@ -3,14 +3,15 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SeoSettingController;
 use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use App\Models\VideoGallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,7 +121,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Gallery All Routes
     Route::controller(PhotoGalleryController::class)->group(function () {
         Route::get('/all/photo/gallery', 'allPhotoGallery')->name('all.photo.gallery');
-        Route::get('/add/photo/gaery', 'addPhotoGallery')->name('add.photo.gallery');
+        Route::get('/add/photo/gallery', 'addPhotoGallery')->name('add.photo.gallery');
         Route::post('/store/photo/gallery', 'storePhotoGallery')->name('store.photo.gallery');
         Route::get('/edit/photo/gallery/{id}', 'editPhotoGallery')->name('edit.photo.gallery');
         Route::post('/update/photo/gallery', 'updatePhotoGallery')->name('update.photo.gallery');
@@ -151,7 +152,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Review all Route
     Route::controller(SeoSettingController::class)->group(function () {
 
-        Route::get('/seo/setting', 'seoSiteSetting')->name('seo.setting');
+        Route::get('/seo/setting', 'seoSetting')->name('seo.setting');
         Route::post('/update/seo/setting', 'updateSeoSetting')->name('update.seo.setting');
 
     });
@@ -180,7 +181,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/roles/{id}', 'deleteRoles')->name('delete.roles');
 
         Route::get('/add/roles/permission', 'addRolesPermission')->name('add.roles.permission');
-        Route::post('/role/permission/store', 'rolePermisssionStore')->name('role.permission.store');
+        Route::post('/role/permission/store', 'rolePermissionStore')->name('role.permission.store');
         Route::get('/all/roles/permission', 'allRolesPermission')->name('all.roles.permission');
         Route::get('/admin/edit/roles/{id}', 'adminEditRoles')->name('admin.edit.roles');
         Route::post('/role/permission/update/{id}', 'rolePermissionUpdate')->name('role.permission.update');

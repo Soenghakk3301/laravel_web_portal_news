@@ -177,12 +177,12 @@
                      </li>
 
                      <li>
-                         <a href="#review" data-bs-toggle="collapse">
+                         <a href="#seo" data-bs-toggle="collapse">
                              <i class="mdi mdi-email-multiple-outline"></i>
                              <span> Seo Setting </span>
                              <span class="menu-arrow"></span>
                          </a>
-                         <div class="collapse" id="review">
+                         <div class="collapse" id="seo">
                              <ul class="nav-second-level">
                                  <li>
                                      <a href="{{ route('seo.setting') }}">Update Seo </a>

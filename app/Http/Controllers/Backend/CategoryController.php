@@ -25,7 +25,6 @@ class CategoryController extends Controller
         Category::insert([
            'category_name' => $request->category_name,
            'category_slug' => strtolower(str_replace(' ', '-', $request->category_name)),
-
          ]);
 
 

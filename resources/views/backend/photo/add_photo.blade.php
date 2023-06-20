@@ -29,14 +29,15 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('store.photo.gallery') }}">
+                            <form id="myForm" method="post" action="{{ route('store.photo.gallery') }}"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
                                     <div class="form-group col-md-8 mb-3">
                                         <label for="inputEmail4" class="form-label">Multi Photo Gallery </label>
                                         <input type="file" name="multi_image[]" class="form-control" id="multiImg"
-                                            multiple="">
+                                            multiple="multi_image">
 
                                         <div class="row" id="preview_img"></div>
 

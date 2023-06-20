@@ -139,7 +139,7 @@ class RoleController extends Controller
        return redirect()->back()->with($notification);
    }
 
-   public function addRolesPermissio()
+   public function addRolesPermission()
    {
        $roles = Role::all();
        $permissions = Permission::all();
@@ -167,7 +167,7 @@ class RoleController extends Controller
        return redirect()->route('all.roles.permission')->with($notification);
    }
 
-   public function allRolesPermissio()
+   public function allRolesPermission()
    {
        $roles = Role::all();
        return view('backend.pages.roles.all_roles_permission', compact('roles'));

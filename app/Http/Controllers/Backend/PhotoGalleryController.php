@@ -12,7 +12,7 @@ class PhotoGalleryController extends Controller
 {
     public function allPhotoGallery()
     {
-        $photo = PhotoGallery::latest()->get();
+        $photo = PhotoGallery::get();
         return view('backend.photo.all_photo', compact('photo'));
     }
 

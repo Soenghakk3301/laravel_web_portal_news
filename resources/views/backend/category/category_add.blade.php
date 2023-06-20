@@ -30,6 +30,7 @@
                         <div class="card-body">
 
                             <form id="myForm" method="post" action="{{ route('category.store') }}">
+                                @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="inputEmail4" class="form-label">Category Name </label>
