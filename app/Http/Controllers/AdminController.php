@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AdminController extends Controller
 {
@@ -113,7 +115,8 @@ class AdminController extends Controller
 
     public function addAdmin()
     {
-        return view('backend.admin.add_admin');
+        $roles = Role::all();
+        return view('backend.admin.add_admin', compact('roles'));
     }
 
 
@@ -129,6 +132,11 @@ class AdminController extends Controller
         $user->status = 'inactive';
         $user->save();
 
+
+        if($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
         $notification = array(
            'message' => 'New Admin User Created Successfully',
            'alert-type' => 'success'
@@ -139,8 +147,9 @@ class AdminController extends Controller
 
     public function editAdmin($id)
     {
+        $roles = Role::all();
         $adminuser = User::findOrFail($id);
-        return view('backend.admin.edit_admin', compact('adminuser'));
+        return view('backend.admin.edit_admin', compact('adminuser', 'roles'));
     }
 
 
@@ -154,8 +163,14 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'admin';
-        $user->status = 'inactive';
+        $user->status = 'active';
         $user->save();
+
+
+        $user->roles()->detach();
+        if($request->roles) {
+            $user->assignRole($request->roles);
+        }
 
         $notification = array(
            'message' => 'Admin User Updated Successfully',
@@ -167,7 +182,10 @@ class AdminController extends Controller
 
     public function deleteAdmin($id)
     {
-        User::findOrFail($id)->delete();
+        $user =  User::findOrFail($id);
+        if (!is_null($user)) {
+            $user->delete();
+        }
 
         $notification = array(
            'message' => 'Admin User Deleted Successfully',

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\SubCategory;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -18,7 +19,19 @@ class IndexController extends Controller
         $newnewspost = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
         $newspopular = NewsPost::orderBy('view_count', 'DESC')->limit(8)->get();
 
-        return view('frontend.index', compact('newnewspost', 'newspopular'));
+        $skip_cat_0 = Category::skip(0)->first();
+        $skip_news_0 = NewsPost::where('status', 1)->where('category_id', $skip_cat_0->id)->orderBy('id', 'DESC')->limit(5)->get();
+
+        $skip_cat_2 = Category::skip(2)->first();
+        $skip_news_2 = NewsPost::where('status', 1)->where('category_id', $skip_cat_2->id)->orderBy('id', 'DESC')->limit(6)->get();
+
+        $skip_cat_1 = Category::skip(1)->first();
+        $skip_news_1 = NewsPost::where('status', 1)->where('category_id', $skip_cat_1->id)->orderBy('id', 'DESC')->limit(3)->get();
+
+        $skip_cat_4 = Category::skip(4)->first();
+        $skip_news_4 = NewsPost::where('status', 1)->where('category_id', $skip_cat_4->id)->orderBy('id', 'DESC')->limit(5)->get();
+
+        return view('frontend.index', compact('newnewspost', 'newspopular', 'skip_cat_0', 'skip_news_0', 'skip_cat_2', 'skip_news_2', 'skip_cat_1', 'skip_news_1', 'skip_cat_4', 'skip_news_4'));
     }
 
     public function newsDetails($id, $slug)
@@ -96,5 +109,27 @@ class IndexController extends Controller
         return view('frontend.news.search_by_date', compact('news', 'formatDate', 'newnewspost', 'newspopular'));
     }
 
+
+    public function newsSearch(Request $request)
+    {
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        $news = NewsPost::where('news_title', 'LIKE', "%$item%")->get();
+        $newnewspost = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $newspopular = NewsPost::orderBy('view_count', 'DESC')->limit(8)->get();
+
+        return view('frontend.news.search', compact('news', 'newnewspost', 'newspopular', 'item'));
+
+    }
+
+    public function reporterNews($id)
+    {
+        $reporter = User::findOrFail($id);
+
+        $news = NewsPost::where('user_id', $id)->get();
+        return view('frontend.reporter.reporter_news_post', compact('reporter', 'news'));
+    }
 
 }

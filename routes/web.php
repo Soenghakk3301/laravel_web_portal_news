@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\SeoSettingController;
 use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ReviewController;
@@ -146,6 +147,46 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/review/{id}', 'deleteReview')->name('delete.review');
 
     });
+
+    // Review all Route
+    Route::controller(SeoSettingController::class)->group(function () {
+
+        Route::get('/seo/setting', 'seoSiteSetting')->name('seo.setting');
+        Route::post('/update/seo/setting', 'updateSeoSetting')->name('update.seo.setting');
+
+    });
+
+
+    // Permission all Route
+    Route::controller(RoleController::class)->group(function () {
+
+        Route::get('/all/permission', 'allPermission')->name('all.permission');
+        Route::get('/add/permission', 'addPermission')->name('add.permission');
+        Route::post('/store/permission', 'storePermission')->name('permission.store');
+        Route::get('/edit/permission/{id}', 'editPermission')->name('edit.permission');
+        Route::post('/update/permission', 'updatePermission')->name('permission.update');
+        Route::get('/delete/permission/{id}', 'deletePermission')->name('delete.permission');
+    });
+
+
+    // Roles all Route
+    Route::controller(RoleController::class)->group(function () {
+
+        Route::get('/all/roles', 'allRoles')->name('all.roles');
+        Route::get('/add/roles', 'addRoles')->name('add.roles');
+        Route::post('/store/roles', 'storeRoles')->name('roles.store');
+        Route::get('/edit/roles/{id}', 'editRoles')->name('edit.roles');
+        Route::post('/update/roles', 'udateRoles')->name('roles.update');
+        Route::get('/delete/roles/{id}', 'deleteRoles')->name('delete.roles');
+
+        Route::get('/add/roles/permission', 'addRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'rolePermisssionStore')->name('role.permission.store');
+        Route::get('/all/roles/permission', 'allRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'adminEditRoles')->name('admin.edit.roles');
+        Route::post('/role/permission/update/{id}', 'rolePermissionUpdate')->name('role.permission.update');
+        Route::get('/admin/delete/roles/{id}', 'adminDeleteRoles')->name('admin.delete.roles');
+
+    });
 });
 
 
@@ -157,6 +198,8 @@ Route::get('/news/category/{id}/{slug}', [IndexController::class, 'catWiseNews']
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subCatWiseNews']);
 Route::get('/lang/change', [IndexController::class, 'Change'])->name('changeLang');
 Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
+Route::post('/news', [IndexController::class, 'newsSearch'])->name('news.search');
+Route::get('/reporter/{id}', [IndexController::class, 'reporterNews'])->name('reporter.all.news');
 Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review');
 
 

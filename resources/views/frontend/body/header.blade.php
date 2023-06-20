@@ -42,10 +42,14 @@
             </div>
 
             <div class="col-lg-3 col-md-3">
-                <form class="header-search" action=" " method="post">
-                    <input type="text" alue="" name="s" placeholder=" Search Here " required="">
+
+                <form class="header-search" action="{{ route('news.search') }}" method="post">
+                    @csrf
+
+                    <input type="text" name="search" placeholder=" Search Here " required="">
                     <button type="submit" value="Search"> <i class="las la-search"></i> </button>
                 </form>
+
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="header-social">
@@ -74,7 +78,8 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="logo">
                         <a href="{{ url('/') }}" title="NewsFlash">
-                            <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="NewsFlash" title="NewsFlash">
+                            <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="NewsFlash"
+                                title="NewsFlash">
                         </a>
                     </div>
                 </div>
@@ -106,8 +111,7 @@
                         <li id="menu-item-89"
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-89">
                             <a href="{{ url('/') }} " aria-current="page"> <i class="fa-solid fa-house-user"></i>
-                                HOME</a>
-                        </li>
+                                HOME</a></li>
 
                         @php
                             $categories = App\Models\Category::orderBy('category_name', 'ASC')
@@ -136,8 +140,7 @@
                                                 href="{{ url('news/subcategory/' . $subcategory->id . '/' . $subcategory->subcategory_slug) }}">
                                                 {{ GoogleTranslate::trans($subcategory->subcategory_name, app()->getLocale()) }}
 
-                                            </a>
-                                        </li>
+                                            </a></li>
                                     @endforeach
                                 </ul>
 

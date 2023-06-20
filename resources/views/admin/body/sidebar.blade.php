@@ -26,26 +26,33 @@
                  </li>
 
                  @if ($status == 'active')
+
                      <li class="menu-title mt-2">Menu</li>
 
-                     <li>
-                         <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                             <i class="mdi mdi-cart-outline"></i>
-                             <span> Category </span>
-                             <span class="menu-arrow"></span>
-                         </a>
-                         <div class="collapse" id="sidebarEcommerce">
-                             <ul class="nav-second-level">
-                                 <li>
-                                     <a href="{{ route('all.category') }}">All Category</a>
-                                 </li>
-                                 <li>
-                                     <a href="{{ route('add.category') }}">Add Category</a>
-                                 </li>
+                     @if (Auth::user()->can('category.menu'))
+                         <li>
+                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                                 <i class="mdi mdi-cart-outline"></i>
+                                 <span> Category </span>
+                                 <span class="menu-arrow"></span>
+                             </a>
+                             <div class="collapse" id="sidebarEcommerce">
+                                 <ul class="nav-second-level">
+                                     @if (Auth::user()->can('category.list'))
+                                         <li>
+                                             <a href="{{ route('all.category') }}">All Category</a>
+                                         </li>
+                                     @endif
+                                     @if (Auth::user()->can('category.add'))
+                                         <li>
+                                             <a href="{{ route('add.category') }}">Add Category</a>
+                                         </li>
+                                     @endif
 
-                             </ul>
-                         </div>
-                     </li>
+                                 </ul>
+                             </div>
+                         </li>
+                     @endif
 
                      <li>
                          <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
@@ -134,12 +141,12 @@
                      </li>
 
                      <li>
-                         <a href="#video" data-bs-toggle="collapse">
+                         <a href="#live" data-bs-toggle="collapse">
                              <i class="mdi mdi-email-multiple-outline"></i>
                              <span> Live Tv Setting </span>
                              <span class="menu-arrow"></span>
                          </a>
-                         <div class="collapse" id="video">
+                         <div class="collapse" id="live">
                              <ul class="nav-second-level">
                                  <li>
                                      <a href="{{ route('update.live.tv') }}">Update Live TV</a>
@@ -163,6 +170,22 @@
 
                                  <li>
                                      <a href="{{ route('approve.review') }}">Approve Review</a>
+                                 </li>
+
+                             </ul>
+                         </div>
+                     </li>
+
+                     <li>
+                         <a href="#review" data-bs-toggle="collapse">
+                             <i class="mdi mdi-email-multiple-outline"></i>
+                             <span> Seo Setting </span>
+                             <span class="menu-arrow"></span>
+                         </a>
+                         <div class="collapse" id="review">
+                             <ul class="nav-second-level">
+                                 <li>
+                                     <a href="{{ route('seo.setting') }}">Update Seo </a>
                                  </li>
 
                              </ul>
@@ -194,16 +217,24 @@
                      <li>
                          <a href="#sidebarExpages" data-bs-toggle="collapse">
                              <i class="mdi mdi-text-box-multiple-outline"></i>
-                             <span> Extra Pages </span>
+                             <span> Roles And Permission </span>
                              <span class="menu-arrow"></span>
                          </a>
                          <div class="collapse" id="sidebarExpages">
                              <ul class="nav-second-level">
                                  <li>
-                                     <a href="pages-starter.html">Starter</a>
+                                     <a href="{{ route('all.permission') }}">All Permission</a>
                                  </li>
                                  <li>
-                                     <a href="pages-timeline.html">Timeline</a>
+                                     <a href="{{ route('all.roles') }}">All Roles</a>
+                                 </li>
+
+                                 <li>
+                                     <a href="{{ route('add.roles.permission') }}">Roles in Permission</a>
+                                 </li>
+
+                                 <li>
+                                     <a href="{{ route('all.roles.permission') }}">All Roles in Permission</a>
                                  </li>
 
                              </ul>

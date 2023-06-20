@@ -58,6 +58,16 @@
                                         <input type="password" name="password" class="form-control" id="inputEmail4">
                                     </div>
 
+                                    <div class="form-group col-md-6 mb-3">
+                                        <label for="inputEmail4" class="form-label">Asign Roles </label>
+                                        <select name="roles" class="form-select" id="example-select">
+                                            <option> Select One Roles </option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                 </div>
 
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save
